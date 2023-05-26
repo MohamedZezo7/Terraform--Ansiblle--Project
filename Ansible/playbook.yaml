@@ -1,0 +1,34 @@
+---
+- name: Install Nginx and deploy code
+  hosts: frontend
+  become: true
+
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+
+    - name: Copy files to destination
+      copy:
+        src: ./index.html.j2
+        dest: dest: "{{'/var/www/html/index.html' if ansible_facts.distrubion=='ubuntu' else '/usr/share/nginx/html/index.html' }}  "
+        owner: ec2-user
+        group: root
+        mode: '0755'
+
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded

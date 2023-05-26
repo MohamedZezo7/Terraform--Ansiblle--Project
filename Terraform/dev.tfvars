@@ -1,0 +1,21 @@
+region            = "us-east-1"
+webami            = "ami-0889a44b331db0194"
+web-instance-type = "t2.micro"
+appami            = "ami-0889a44b331db0194"
+app-instance-type = "t2.micro"
+vpc_cidr          = "10.0.0.0/16"
+subnet1-cidr      = "10.0.1.0/24"
+subnet2-cidr      = "10.0.2.0/24"
+subnet3-cidr      = "10.0.3.0/24"
+subnet4-cidr      = "10.0.4.0/24"
+subnet5-cidr      = "10.0.5.0/24"
+subnet6-cidr      = "10.0.6.0/24"
+
+# Database Variables
+
+engine         = "mysql"
+engine_version = "8.0.20"
+instance-class = "db.t2.micro"
+db-name        = "mydb"
+username       = "myuser"
+password       = "password"
